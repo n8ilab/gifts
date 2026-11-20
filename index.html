@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><title>North Pole</title><meta name="theme-color" content="#0f3b2e">
+<link rel="icon" type="image/png" href="icon-192.png"><link rel="apple-touch-icon" href="icon-180.png"><link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-title" content="North Pole"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta property="og:title" content="North Pole · Family Christmas"><meta property="og:description" content="Wish lists, gift sign-ups, Santa planner and budgets for the family.">
+<meta property="og:image" content="https://n8ilab.github.io/gifts/og.png">
+<style>
+:root{--g:#0f3b2e;--g2:#14523f;--r:#c8102e;--r2:#e63946;--gold:#f4c95d;--cream:#fffaf0;--ink:#1f2933;--mut:#6b7280;--line:#e8e2d4;--card:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;font-family:-apple-system,"Segoe UI",system-ui,sans-serif;background:var(--cream);color:var(--ink);padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+button{font:inherit;cursor:pointer}input,select,textarea{font:inherit;font-size:16px}
+.top{background:linear-gradient(160deg,var(--g),var(--g2));color:#fff;padding:calc(env(safe-area-inset-top) + 14px) 16px 16px;position:relative;overflow:hidden}
+.top h1{margin:0;font-size:22px}.top .cd{font-size:13px;color:var(--gold);font-weight:800;letter-spacing:1px;text-transform:uppercase}
+.top .who{position:absolute;right:14px;top:calc(env(safe-area-inset-top) + 14px);background:rgba(255,255,255,.15);border:0;color:#fff;border-radius:999px;padding:6px 12px;font-weight:700;font-size:14px}
+#snow{position:absolute;inset:0;pointer-events:none}
+.wrap{max-width:720px;margin:0 auto;padding:12px}
+.tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:#fff;border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:20}
+.tabs button{flex:1;border:0;background:none;padding:9px 2px 8px;font-size:11px;color:var(--mut);font-weight:700}.tabs button b{display:block;font-size:22px;line-height:1.1}
+.tabs button.on{color:var(--r)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.h{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--g2);font-weight:800;margin:14px 4px 8px}
+.btn{border:0;border-radius:12px;padding:12px 14px;font-weight:800;background:var(--r);color:#fff}.btn.g{background:var(--g2)}.btn.ghost{background:#f3efe4;color:var(--ink)}.btn.sm{padding:7px 11px;font-size:14px;border-radius:10px}
+.btn.wide{width:100%}
+.ppl{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px}
+.pp{border:1px solid var(--line);background:#fff;border-radius:16px;padding:10px 4px;text-align:center;font-weight:800}
+.av{width:46px;height:46px;border-radius:50%;margin:0 auto 6px;display:grid;place-items:center;color:#fff;font-weight:900;font-size:19px}
+.pp small{display:block;font-weight:600;color:var(--mut);font-size:11px;margin-top:2px}
+.row{display:flex;align-items:center;gap:10px;padding:10px 2px;border-bottom:1px solid #f1ece0}.row:last-child{border-bottom:0}
+.row .t{flex:1;min-width:0}.row .t b{display:block;font-size:15px}.row .t small{color:var(--mut);font-size:12.5px;display:block;overflow:hidden;text-overflow:ellipsis}
+.price{font-weight:800;white-space:nowrap}
+.tag{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:2px 8px;margin-right:4px}
+.dot{width:14px;height:14px;border-radius:50%;flex:none;border:0}
+.st-idea{background:#cbd5e1}.st-ordered{background:#f59e0b}.st-delivered{background:#3b82f6}.st-wrapped{background:#16a34a}
+.stp{border:0;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800;color:#fff;min-width:78px}
+.bar{height:8px;background:#efe9da;border-radius:6px;overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--g2),#2bb673)}.bar i.over{background:var(--r2)}
+.sum{display:flex;justify-content:space-between;font-size:13px;color:var(--mut);margin-top:4px}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:2px 0 8px;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.chips button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:700;white-space:nowrap}.chips button.on{background:var(--g2);color:#fff;border-color:var(--g2)}
+.empty{color:var(--mut);text-align:center;padding:18px 8px;font-size:14px}
+.sheet{position:fixed;inset:0;background:rgba(10,20,15,.55);display:none;align-items:flex-end;justify-content:center;z-index:50}.sheet.on{display:flex}
+.sh{background:var(--cream);width:100%;max-width:560px;max-height:92vh;overflow:auto;border-radius:22px 22px 0 0;padding:16px 16px calc(18px + env(safe-area-inset-bottom))}
+.sh h3{margin:0 0 10px;font-size:19px;display:flex;align-items:center;gap:8px}.sh h3 span{flex:1}
+.x{border:0;background:#ece6d6;border-radius:50%;width:32px;height:32px;font-size:15px}
+label{display:block;font-size:12px;font-weight:800;color:var(--mut);margin:10px 2px 4px;text-transform:uppercase;letter-spacing:.5px}
+.in{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:#fff}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px}.seg button{border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px 2px;font-weight:800;font-size:13px}
+.seg button.on{background:var(--g2);color:#fff;border-color:var(--g2)}
+.big{font-size:28px;font-weight:900}.mut{color:var(--mut);font-size:13px}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}.stat div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 4px}.stat b{display:block;font-size:20px}.stat small{color:var(--mut);font-size:11px;text-transform:uppercase;font-weight:800}
+/* login */
+#login{position:fixed;inset:0;z-index:60;background:radial-gradient(circle at 50% 20%,#1d6b52,#0b2a20);color:#fff;overflow:auto;padding:calc(env(safe-area-inset-top) + 30px) 18px 30px}
+#login h1{text-align:center;margin:6px 0 2px;font-size:30px}#login p{text-align:center;color:var(--gold);margin:0 0 20px;font-weight:700}
+.fam{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:12px;margin:0 auto 12px;max-width:460px}
+.fam b{display:block;margin-bottom:8px;color:var(--gold);letter-spacing:1px;text-transform:uppercase;font-size:13px}
+.fam .ppl .pp{background:rgba(255,255,255,.95);color:var(--ink);border:0}
+.pad{display:grid;grid-template-columns:repeat(3,72px);gap:12px;justify-content:center;margin-top:16px}.pad button{height:64px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:26px;font-weight:700}
+.dots{display:flex;gap:14px;justify-content:center;margin-top:14px}.dots i{width:16px;height:16px;border-radius:50%;border:2px solid #fff}.dots i.f{background:#fff}
+.shake{animation:sh .35s}@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:12px;padding:10px 16px;font-weight:700;z-index:70;display:none;max-width:90vw}
+.claim{background:#fff1f2;color:var(--r);border:1px solid #fecdd3}.claimed{background:#ecfdf5;color:#047857;border:0}
+a.lk{color:var(--g2);font-weight:700;text-decoration:none}
+</style></head><body>
+<div id="login"><div style="text-align:center;font-size:52px">🎄</div><h1>North Pole</h1><p id="lcd"></p><div id="lwho"></div>
+  <div id="lpin" style="display:none;text-align:center"><div class="av" id="lav" style="width:70px;height:70px;font-size:28px"></div><div style="font-size:20px;font-weight:800" id="lnm"></div>
+    <div style="margin-top:4px;color:#d1fae5">Enter your 4-number code</div><div class="dots" id="ldots"><i></i><i></i><i></i><i></i></div><div id="lerr" style="color:#fecaca;margin-top:10px;min-height:20px;font-weight:700"></div>
+    <div class="pad" id="lpad"></div><button class="btn ghost" style="margin-top:18px;background:rgba(255,255,255,.12);color:#fff" id="lback">← Not me</button></div></div>
+<div class="top"><canvas id="snow"></canvas><div class="cd" id="cd"></div><h1 id="ttl">North Pole</h1><button class="who" id="whoB"></button></div>
+<div class="wrap" id="view"></div>
+<nav class="tabs" id="tabs"></nav>
+<div class="sheet" id="sheet"><div class="sh" id="sh"></div></div>
+<div class="toast" id="toast"></div>
+<script>
+const API = 'https://desktop1.tailaea77d.ts.net:10000';
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const money = n => '$' + (+n || 0).toFixed(2).replace(/\.00$/, '');
+const COL = { kays: '#7c3aed', florys: '#c8102e', gammys: '#0f766e' };
+const ST = { idea: 'Idea', ordered: 'Ordered', delivered: 'Delivered', wrapped: 'Wrapped' }, STK = Object.keys(ST);
+const FR = { parent: ['👪', 'Parent'], santa: ['🎅', 'Santa'], stocking: ['🧦', 'Stocking'] };
+let TOK = localStorage.getItem('np.tok'), S = null, TAB = 'lists', VIEWP = null, PF = 'all', PEOPLE0 = null, PIN = '', LUSER = null, IDLE = Date.now();
+const toast = (m, ms = 2200) => { const t = $('toast'); t.textContent = m; t.style.display = 'block'; clearTimeout(t._t); t._t = setTimeout(() => t.style.display = 'none', ms); };
+async function call(path, body) {
+  const r = await fetch(API + path, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Token': TOK || '' }, body: JSON.stringify(body || {}) });
+  const j = await r.json().catch(() => ({ error: 'North Pole server is napping. Try again in a minute.' }));
+  if (r.status === 401 && path !== '/api/login') { signOut(true); throw new Error(j.error); }
+  if (!r.ok) throw new Error(j.error || 'Something went wrong'); return j;
+}
+const act = async (a, b, msg) => { try { const j = await call('/api/act', { a, b }); S = j.state; render(); if (msg) toast(msg); return j.r; } catch (e) { toast('⚠ ' + e.message, 3500); throw e; } };
+const days = () => Math.max(0, Math.ceil((new Date((S ? S.christmas : new Date().getFullYear() + '-12-25') + 'T00:00') - new Date()) / 864e5));
+const pName = id => (S.people.find(p => p.id === id) || {}).name || id;
+const rName = rk => rk.startsWith('u:') ? pName(rk.slice(2)) : rk.slice(2);
+const av = (p, sz = 46) => `<div class="av" style="background:${COL[p.family] || '#64748b'};width:${sz}px;height:${sz}px;font-size:${sz * .42}px">${esc(p.name[0])}</div>`;
+
+// ---------------- login (family → person → PIN)
+async function showLogin() {
+  $('login').style.display = 'block'; $('lpin').style.display = 'none'; $('lwho').style.display = 'block';
+  $('lcd').textContent = `${days()} sleeps till Christmas`;
+  try { PEOPLE0 = PEOPLE0 || await (await fetch(API + '/api/people')).json(); } catch (e) { $('lwho').innerHTML = '<p style="color:#fecaca">The North Pole server is napping (Nathan\'s computer is off). Try again soon.</p>'; return; }
+  $('lwho').innerHTML = Object.entries(PEOPLE0.families).map(([f, nm]) => `<div class="fam"><b>${esc(nm)}</b><div class="ppl">${PEOPLE0.people.filter(p => p.family === f).map(p => `<button class="pp" data-u="${p.id}">${av(p)}${esc(p.name)}</button>`).join('')}</div></div>`).join('');
+  $('lwho').querySelectorAll('[data-u]').forEach(b => b.onclick = () => pickUser(b.dataset.u));
+}
+function pickUser(u) {
+  LUSER = PEOPLE0.people.find(p => p.id === u); PIN = ''; $('lwho').style.display = 'none'; $('lpin').style.display = 'block';
+  $('lav').style.background = COL[LUSER.family]; $('lav').textContent = LUSER.name[0]; $('lnm').textContent = 'Hi ' + LUSER.name + '!'; $('lerr').textContent = ''; dots();
+}
+const dots = () => $('ldots').querySelectorAll('i').forEach((d, i) => d.classList.toggle('f', i < PIN.length));
+$('lpad').innerHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9, '', 0, '⌫'].map(k => k === '' ? '<span></span>' : `<button data-k="${k}">${k}</button>`).join('');
+$('lpad').querySelectorAll('button').forEach(b => b.onclick = async () => {
+  const k = b.dataset.k; if (k === '⌫') PIN = PIN.slice(0, -1); else if (PIN.length < 4) PIN += k; dots();
+  if (PIN.length === 4) { try { const j = await call('/api/login', { user: LUSER.id, pin: PIN }); TOK = j.token; localStorage.setItem('np.tok', TOK); S = j.state; $('login').style.display = 'none'; TAB = 'lists'; VIEWP = null; render(); toast(`Welcome, ${S.me.name}! 🎅`); }
+    catch (e) { PIN = ''; dots(); $('lerr').textContent = e.message; $('ldots').classList.add('shake'); setTimeout(() => $('ldots').classList.remove('shake'), 400); } }
+});
+$('lback').onclick = showLogin;
+function signOut(silent) { if (!silent && TOK) call('/api/logout').catch(() => {}); TOK = null; S = null; localStorage.removeItem('np.tok'); closeSheet(); showLogin(); }
+// kids can't peek: lock grown-up accounts after 10 idle minutes
+['click', 'touchstart', 'keydown'].forEach(e => addEventListener(e, () => IDLE = Date.now(), { passive: true }));
+setInterval(() => { if (S && !S.me.kid && Date.now() - IDLE > 10 * 60e3) { signOut(); toast('🔒 Locked so nobody peeks'); } }, 30e3);
+
+// ---------------- shell
+function render() {
+  $('cd').textContent = `🎄 ${days()} days till Christmas`;
+  $('whoB').textContent = S.me.name + ' ▾';
+  const tabs = S.me.kid ? [['lists', '🎁', 'Wish lists'], ['santa', '🎅', 'Secret Santa'], ['more', '⭐', 'Me']]
+    : [['lists', '🎁', 'Wish lists'], ['plan', '📝', 'My planner'], ['budget', '💰', 'Budget'], ['more', '⭐', 'More']];
+  if (!tabs.some(t => t[0] === TAB)) TAB = 'lists';
+  $('tabs').innerHTML = tabs.map(([k, i, l]) => `<button class="${TAB === k ? 'on' : ''}" data-t="${k}"><b>${i}</b>${l}</button>`).join('');
+  $('tabs').querySelectorAll('button').forEach(b => b.onclick = () => { TAB = b.dataset.t; VIEWP = null; render(); scrollTo(0, 0); });
+  ({ lists: vLists, plan: vPlan, budget: vBudget, more: vMore, santa: vSanta })[TAB]();
+}
+$('whoB').onclick = () => sheet(`<h3><span>${esc(S.me.name)}</span><button class="x" onclick="closeSheet()">✕</button></h3>
+  <button class="btn ghost wide" onclick="refresh()">🔄 Refresh</button><div style="height:8px"></div><button class="btn wide" onclick="signOut()">🔒 Sign out</button>`);
+async function refresh() { try { S = await call('/api/state'); render(); closeSheet(); toast('Up to date'); } catch (e) { toast(e.message); } }
+
+// ---------------- 🎁 wish lists
+function vLists() {
+  $('ttl').textContent = VIEWP ? (VIEWP === S.me.id ? 'My wish list' : pName(VIEWP) + "'s list") : 'Wish lists';
+  if (!VIEWP) {
+    const mine = S.wishes.filter(w => w.for === S.me.id && w.by === S.me.id).length;
+    let h = `<div class="card" style="display:flex;align-items:center;gap:12px">${av(S.me)}<div style="flex:1"><b>My wish list</b><div class="mut">${mine} thing${mine === 1 ? '' : 's'} on it</div></div><button class="btn sm" onclick="openP('${S.me.id}')">Open</button></div>`;
+    for (const [f, nm] of Object.entries(S.families)) {
+      h += `<div class="h">${esc(nm)}</div><div class="ppl">` + S.people.filter(p => p.family === f && p.id !== S.me.id).map(p => {
+        const ws = S.wishes.filter(w => w.for === p.id), open = ws.filter(w => !w.claimed).length;
+        return `<button class="pp" onclick="openP('${p.id}')">${av(p)}${esc(p.name)}<small>${ws.length ? (S.me.kid ? ws.length + ' wishes' : open + ' open · ' + (ws.length - open) + ' taken') : 'no list yet'}</small></button>`; }).join('') + '</div>';
+    }
+    $('view').innerHTML = h + `<div class="mut" style="text-align:center;margin:16px 6px">🤫 You never see who's getting you what, or ideas others add for you.</div>`;
+    return;
+  }
+  const p = S.people.find(x => x.id === VIEWP), mine = VIEWP === S.me.id;
+  const ws = S.wishes.filter(w => w.for === VIEWP).sort((a, b) => (b.prio - a.prio) || (!!a.claimed - !!b.claimed));
+  let h = `<button class="btn ghost sm" onclick="VIEWP=null;render()">← Everyone</button><div style="height:10px"></div>`;
+  h += `<div class="card">` + (ws.map(w => {
+    const sug = w.by !== w.for;
+    let right = '';
+    if (mine) right = `<button class="btn ghost sm" onclick="editWish('${w.id}')">Edit</button>`;
+    else if (!S.me.kid) right = w.claimed ? (w.claimed.by === S.me.id ? `<button class="btn sm claimed" onclick="unclaim('${w.id}')">✓ Mine</button>` : `<span class="tag claimed">✓ ${esc(w.claimed.name)}</span>`)
+      : `<button class="btn sm claim" onclick="claim('${w.id}')">🎁 I'll get it</button>`;
+    else if (w.claimed) right = `<span class="tag claimed">✓ taken</span>`;
+    return `<div class="row"><div class="t"><b>${w.prio ? '❤️ ' : ''}${esc(w.title)}</b><small>${[w.price ? money(w.price) : '', w.size ? 'Size ' + esc(w.size) : '', w.note ? esc(w.note) : '', sug ? '💡 idea from ' + esc(pName(w.by)) : ''].filter(Boolean).join(' · ')}</small>
+      ${w.link ? `<a class="lk" href="${esc(w.link)}" target="_blank" rel="noopener">View it ↗</a>` : ''}${!mine && w.by === S.me.id ? ` · <a class="lk" href="#" onclick="editWish('${w.id}');return false">edit my idea</a>` : ''}</div>${right}</div>`;
+  }).join('') || `<div class="empty">${mine ? 'Your list is empty. Add what you\'re wishing for!' : esc(p.name) + ' hasn\'t added anything yet.'}</div>`) + `</div>`;
+  if (mine) h += `<button class="btn wide" onclick="editWish()">＋ Add to my wish list</button>`;
+  else if (!S.me.kid) h += `<button class="btn g wide" onclick="editWish(null,'${VIEWP}')">💡 Suggest a gift idea for ${esc(p.name)}</button><div class="mut" style="text-align:center;margin-top:8px">${esc(p.name)} won't see ideas you add or who's buying.</div>`;
+  $('view').innerHTML = h;
+}
+function openP(id) { VIEWP = id; render(); scrollTo(0, 0); }
+function editWish(id, forId) {
+  const w = id ? S.wishes.find(x => x.id === id) : { for: forId || S.me.id }, other = w.for !== S.me.id;
+  sheet(`<h3><span>${id ? 'Edit' : other ? '💡 Idea for ' + esc(pName(w.for)) : '🎁 Add a wish'}</span><button class="x" onclick="closeSheet()">✕</button></h3>
+    <label>What is it?</label><input class="in" id="wT" value="${esc(w.title)}" placeholder="LEGO set, Ninja blender, hoodie…">
+    <div class="two"><div><label>About how much?</label><input class="in" id="wP" inputmode="decimal" value="${w.price || ''}" placeholder="$"></div><div><label>Size / color</label><input class="in" id="wS" value="${esc(w.size)}" placeholder="M, blue…"></div></div>
+    <label>Link (optional)</label><input class="in" id="wL" value="${esc(w.link)}" placeholder="Paste from Amazon, Target…">
+    <label>Notes</label><input class="in" id="wN" value="${esc(w.note)}" placeholder="Any details">
+    <label style="display:flex;gap:8px;align-items:center;text-transform:none;font-size:15px;color:var(--ink)"><input type="checkbox" id="wH" ${w.prio ? 'checked' : ''} style="width:20px;height:20px"> ❤️ Really, really want this</label>
+    <div style="display:flex;gap:8px;margin-top:14px">${id ? `<button class="btn ghost" onclick="delWish('${id}')">🗑</button>` : ''}<button class="btn wide" id="wGo">Save</button></div>`);
+  $('wGo').onclick = async () => { await act('wish.save', { id, for: w.for, title: $('wT').value, price: $('wP').value, size: $('wS').value, link: $('wL').value, note: $('wN').value, prio: $('wH').checked }, id ? 'Saved' : 'Added ✨'); closeSheet(); };
+}
+async function delWish(id) { if (confirm('Remove this?')) { await act('wish.del', { id }, 'Removed'); closeSheet(); } }
+async function claim(id) { await act('claim', { wish: id }, '🎁 Got it! It\'s in your planner.'); }
+async function unclaim(id) { if (confirm('Let someone else get this one?')) await act('unclaim', { wish: id }, 'Released'); }
+
+// ---------------- 📝 planner (Natalie's gift list)
+function planRecips() {
+  const rs = {}; (S.gifts || []).forEach(g => (rs[g.owner + '|' + g.to] = rs[g.owner + '|' + g.to] || []).push(g));
+  Object.entries(S.budgets || {}).forEach(([o, b]) => Object.keys(b).forEach(rk => rs[o + '|' + rk] = rs[o + '|' + rk] || []));
+  return rs;
+}
+function vPlan() {
+  $('ttl').textContent = 'My gift planner';
+  const G = S.gifts || [], bought = G.filter(g => g.status !== 'idea'), spent = bought.reduce((a, g) => a + g.cost, 0), planned = G.reduce((a, g) => a + g.cost, 0);
+  const totB = Object.values(S.budgets || {}).reduce((a, b) => a + Object.values(b).reduce((x, y) => x + y, 0), 0);
+  let h = `<div class="stat"><div><b>${money(spent)}</b><small>Spent</small></div><div><b>${totB ? money(Math.max(0, totB - spent)) : '–'}</b><small>Left</small></div><div><b>${G.filter(g => g.status === 'wrapped').length}/${G.length}</b><small>Wrapped</small></div></div>`;
+  if (totB) h += `<div class="bar" style="margin:8px 4px 0"><i class="${spent > totB ? 'over' : ''}" style="width:${Math.min(100, spent / totB * 100)}%"></i></div>`;
+  h += `<div class="chips" style="margin-top:12px">${[['all', 'All'], ['todo', 'Not wrapped'], ['idea', '💭 Ideas'], ['santa', '🎅 Santa'], ['stocking', '🧦 Stocking']].map(([k, l]) => `<button class="${PF === k ? 'on' : ''}" onclick="PF='${k}';render()">${l}</button>`).join('')}</div>`;
+  const rs = planRecips(), keys = Object.keys(rs).sort((a, b) => rName(a.split('|')[1]).localeCompare(rName(b.split('|')[1])));
+  const flt = g => PF === 'all' || (PF === 'todo' ? g.status !== 'wrapped' : PF === 'idea' ? g.status === 'idea' : g.from === PF);
+  if (!keys.length) h += `<div class="card empty">Nothing yet. Tap <b>＋ Add a gift</b>, or claim things from people's wish lists. 🎄</div>`;
+  for (const k of keys) {
+    const [own, rk] = k.split('|'), gs = rs[k].filter(flt), all = rs[k], b = ((S.budgets || {})[own] || {})[rk] || 0;
+    const sp = all.filter(g => g.status !== 'idea').reduce((a, g) => a + g.cost, 0);
+    if (!gs.length && PF !== 'all') continue;
+    h += `<div class="h" style="display:flex;justify-content:space-between"><span>${esc(rName(rk))}${own !== S.me.id ? ' <span style="text-transform:none;color:var(--mut)">(' + esc(pName(own)) + "'s)</span>" : ''}</span><a class="lk" href="#" onclick="addGift('${esc(rk)}','${own}');return false" style="text-transform:none;letter-spacing:0">＋ add</a></div><div class="card">`;
+    h += gs.map(g => `<div class="row"><button class="stp st-${g.status}" onclick="cycle('${g.id}')">${ST[g.status]}</button>
+      <div class="t" onclick="addGift(null,null,'${g.id}')"><b>${esc(g.title)}</b><small>${FR[g.from][0]} ${FR[g.from][1]}${g.store ? ' · ' + esc(g.store) : ''}${g.wish ? ' · 🎁 from wish list' : ''}</small></div><span class="price">${money(g.cost)}</span></div>`).join('') || '<div class="empty">No gifts here yet</div>';
+    h += `<div class="sum"><span>${all.filter(g => g.status !== 'idea').length} bought: ${money(sp)}</span><span>${b ? (sp > b ? '⚠ ' + money(sp - b) + ' over' : money(b - sp) + ' left of ' + money(b)) : `<a class="lk" href="#" onclick="setBudget('${esc(rk)}','${own}');return false">set budget</a>`}</span></div>`;
+    if (b) h += `<div class="bar"><i class="${sp > b ? 'over' : ''}" style="width:${Math.min(100, sp / b * 100)}%"></i></div>`;
+    h += `</div>`;
+  }
+  h += `<button class="btn wide" onclick="addGift()">＋ Add a gift</button><div class="mut" style="text-align:center;margin-top:10px">Tap the colored button to move a gift along: Idea → Ordered → Delivered → Wrapped.</div>`;
+  $('view').innerHTML = h;
+}
+async function cycle(id) { const g = S.gifts.find(x => x.id === id), n = STK[(STK.indexOf(g.status) + 1) % 4]; await act('gift.status', { id, status: n }, n === 'wrapped' ? '🎀 Wrapped!' : ST[n]); }
+function recipOptions(sel) {
+  const ppl = S.people.filter(p => p.id !== S.me.id).map(p => [`u:${p.id}`, p.name]);
+  const extra = [...new Set((S.gifts || []).map(g => g.to).concat(Object.values(S.budgets || {}).flatMap(Object.keys)).filter(r => r.startsWith('n:')))].map(r => [r, r.slice(2)]);
+  return [...ppl, ...extra].map(([v, l]) => `<option value="${esc(v)}" ${v === sel ? 'selected' : ''}>${esc(l)}</option>`).join('') + `<option value="__new">＋ Someone else…</option>`;
+}
+function addGift(rk, own, id) {
+  const g = id ? S.gifts.find(x => x.id === id) : { to: rk || '', status: 'idea', from: 'parent', owner: own || S.me.id };
+  const seg = (name, opts, cur) => `<div class="seg" data-seg="${name}">${opts.map(([v, l]) => `<button type="button" data-v="${v}" class="${v === cur ? 'on' : ''}">${l}</button>`).join('')}</div>`;
+  sheet(`<h3><span>${id ? 'Edit gift' : '＋ Add a gift'}</span><button class="x" onclick="closeSheet()">✕</button></h3>
+    <label>For</label><select class="in" id="gTo">${recipOptions(g.to)}</select><input class="in" id="gNew" placeholder="Name (teacher, neighbor, aunt…)" style="display:none;margin-top:6px">
+    <label>Gift</label><input class="in" id="gT" value="${esc(g.title)}" placeholder="What is it?">
+    <div class="two"><div><label>Cost</label><input class="in" id="gC" inputmode="decimal" value="${g.cost || ''}" placeholder="$"></div><div><label>Store</label><input class="in" id="gS" value="${esc(g.store)}" placeholder="Amazon, Target…"></div></div>
+    <label>Status</label>${seg('status', STK.map(k => [k, ST[k]]), g.status)}
+    <label>From</label>${seg('from', Object.entries(FR).map(([k, v]) => [k, v[0] + ' ' + v[1]]), g.from)}
+    <label>Link / notes</label><input class="in" id="gN" value="${esc(g.note || g.link)}" placeholder="Order #, tracking, where it's hidden 🤫">
+    <div style="display:flex;gap:8px;margin-top:14px">${id ? `<button class="btn ghost" onclick="delGift('${id}')">🗑</button>` : ''}<button class="btn wide" id="gGo">Save</button></div>`);
+  document.querySelectorAll('[data-seg] button').forEach(b => b.onclick = () => { b.parentNode.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); });
+  const sel = $('gTo'); if (!g.to) sel.value = '__new'; const chk = () => $('gNew').style.display = sel.value === '__new' ? 'block' : 'none'; sel.onchange = chk; chk();
+  $('gGo').onclick = async () => {
+    const to = sel.value === '__new' ? 'n:' + $('gNew').value.trim() : sel.value; if (to === 'n:') return toast('Who is it for?');
+    const v = n => document.querySelector(`[data-seg="${n}"] .on`).dataset.v, nt = $('gN').value;
+    await act('gift.save', { id, owner: g.owner, to, title: $('gT').value, cost: $('gC').value, store: $('gS').value, status: v('status'), from: v('from'), note: nt, link: /^https?:/.test(nt) ? nt : '' }, 'Saved'); closeSheet();
+  };
+}
+async function delGift(id) { if (confirm('Delete this gift?')) { await act('gift.del', { id }, 'Deleted'); closeSheet(); } }
+function setBudget(rk, own) {
+  const cur = (((S.budgets || {})[own || S.me.id]) || {})[rk] || '';
+  sheet(`<h3><span>💰 Budget for ${esc(rName(rk))}</span><button class="x" onclick="closeSheet()">✕</button></h3><input class="in" id="bA" inputmode="decimal" value="${cur}" placeholder="$ amount"><div style="height:10px"></div><button class="btn wide" id="bGo">Save budget</button>`);
+  $('bGo').onclick = async () => { await act('budget', { to: rk, owner: own, amount: $('bA').value }, 'Budget set'); closeSheet(); };
+}
+
+// ---------------- 💰 budget
+function vBudget() {
+  $('ttl').textContent = 'Budget';
+  const G = S.gifts || [], rs = planRecips();
+  const sum = f => G.filter(f).reduce((a, g) => a + g.cost, 0), spent = sum(g => g.status !== 'idea');
+  const totB = Object.values(S.budgets || {}).reduce((a, b) => a + Object.values(b).reduce((x, y) => x + y, 0), 0);
+  let h = `<div class="card"><div class="mut">Spent so far</div><div class="big">${money(spent)}${totB ? ` <span class="mut" style="font-size:16px">of ${money(totB)}</span>` : ''}</div>${totB ? `<div class="bar"><i class="${spent > totB ? 'over' : ''}" style="width:${Math.min(100, spent / totB * 100)}%"></i></div>` : ''}
+    <div class="sum"><span>Still ideas: ${money(sum(g => g.status === 'idea'))}</span><span>Planned total: ${money(sum(() => true))}</span></div></div>`;
+  h += `<div class="h">By who's giving it</div><div class="stat">${Object.entries(FR).map(([k, v]) => `<div><b>${money(sum(g => g.from === k && g.status !== 'idea'))}</b><small>${v[0]} ${v[1]}</small></div>`).join('')}</div>`;
+  h += `<div class="h">By person</div><div class="card">` + (Object.keys(rs).map(k => { const [own, rk] = k.split('|'), sp = rs[k].filter(g => g.status !== 'idea').reduce((a, g) => a + g.cost, 0), b = ((S.budgets || {})[own] || {})[rk] || 0;
+    return `<div class="row" onclick="setBudget('${esc(rk)}','${own}')"><div class="t"><b>${esc(rName(rk))}</b><div class="bar"><i class="${b && sp > b ? 'over' : ''}" style="width:${b ? Math.min(100, sp / b * 100) : 0}%"></i></div></div><span class="price">${money(sp)}${b ? ' / ' + money(b) : ''}</span></div>`; }).join('') || '<div class="empty">Add gifts in your planner to see this.</div>') + `</div><div class="mut" style="text-align:center">Tap a person to set their budget.</div>`;
+  const stores = {}; G.filter(g => g.status !== 'idea' && g.store).forEach(g => stores[g.store] = (stores[g.store] || 0) + g.cost);
+  if (Object.keys(stores).length) h += `<div class="h">By store</div><div class="card">` + Object.entries(stores).sort((a, b) => b[1] - a[1]).map(([s, v]) => `<div class="row"><div class="t"><b>${esc(s)}</b></div><span class="price">${money(v)}</span></div>`).join('') + `</div>`;
+  $('view').innerHTML = h;
+}
+
+// ---------------- 🎅 secret santa + ⭐ more
+function drawCards() {
+  return (S.draws || []).map(d => `<div class="card"><b>🎅 ${esc(d.name)}</b><div class="mut">${d.budget ? 'Spend about ' + money(d.budget) : ''}${d.date ? ' · exchange ' + esc(d.date) : ''}</div>
+    ${d.mine ? `<div style="margin-top:10px;font-size:15px">You're shopping for…</div><div class="big" style="color:var(--r)">🎁 ${esc(pName(d.mine))}</div><button class="btn sm g" onclick="openP('${d.mine}');TAB='lists';render()">See their wish list</button>` : '<div class="mut">You set this one up (not in it).</div>'}
+    ${d.by === S.me.id ? `<div style="margin-top:8px"><a class="lk" href="#" onclick="delDraw('${d.id}');return false">Delete this draw</a></div>` : ''}</div>`).join('') || '<div class="card empty">No Secret Santa yet.</div>';
+}
+function vSanta() { $('ttl').textContent = 'Secret Santa'; $('view').innerHTML = drawCards(); }
+function vMore() {
+  $('ttl').textContent = S.me.kid ? 'Me' : 'More';
+  let h = '';
+  if (!S.me.kid) {
+    h += `<div class="h">🎅 Secret Santa</div>` + drawCards() + `<button class="btn g wide" onclick="newDraw()">＋ Start a Secret Santa draw</button>`;
+    const sh = (S.shares || {}).mine || [], wm = (S.shares || {}).withme || [];
+    h += `<div class="h">🤝 Plan together</div><div class="card"><div class="mut">Share your planner + budget with another grown-up (like your spouse). Kids can never see it.</div>
+      <div style="margin:8px 0"><b>Shared with:</b> ${sh.length ? sh.map(pName).map(esc).join(', ') : 'nobody'}</div>${wm.length ? `<div class="mut">You can also see ${wm.map(pName).map(esc).join(', ')}'s planner.</div>` : ''}
+      <button class="btn sm ghost" onclick="shareSheet()">Choose who</button></div>`;
+  }
+  h += `<div class="h">🔐 My code</div><div class="card"><button class="btn sm ghost" onclick="pinSheet()">Change my 4-number code</button>${!S.me.kid ? ` <button class="btn sm ghost" onclick="resetSheet()">Reset a kid's code</button>` : ''}</div>`;
+  h += `<div class="h">📲 Put it on your phone</div><div class="card mut">iPhone: tap the <b>three lines ☰</b> by the web address → <b>Share</b> → <b>Add to Home Screen</b>. Android: <b>⋮</b> → <b>Add to Home screen</b>.</div>`;
+  h += `<button class="btn wide" onclick="signOut()">🔒 Sign out</button>`;
+  $('view').innerHTML = h;
+}
+function newDraw() {
+  const adults = S.people;
+  sheet(`<h3><span>🎅 New Secret Santa</span><button class="x" onclick="closeSheet()">✕</button></h3>
+    <label>Name</label><input class="in" id="dN" value="Cousins Secret Santa"><div class="two"><div><label>Spend about</label><input class="in" id="dB" inputmode="decimal" placeholder="$25"></div><div><label>Exchange day</label><input class="in" id="dD" placeholder="Dec 24"></div></div>
+    <label>Who's in?</label><div class="ppl">${adults.map(p => `<button type="button" class="pp" data-m="${p.id}" style="opacity:.45">${av(p, 38)}${esc(p.name)}</button>`).join('')}</div>
+    <label style="display:flex;gap:8px;align-items:center;text-transform:none;font-size:15px;color:var(--ink)"><input type="checkbox" id="dF" checked style="width:20px;height:20px"> Don't draw your own family</label>
+    <button class="btn wide" id="dGo" style="margin-top:12px">🎲 Draw names</button><div class="mut" style="margin-top:8px">Everyone only sees who THEY got. Not even you see the others.</div>`);
+  document.querySelectorAll('[data-m]').forEach(b => b.onclick = () => { b.classList.toggle('in'); b.style.opacity = b.classList.contains('in') ? 1 : .45; });
+  $('dGo').onclick = async () => { const m = [...document.querySelectorAll('[data-m].in')].map(b => b.dataset.m);
+    await act('draw.create', { name: $('dN').value, budget: $('dB').value, date: $('dD').value, members: m, nofamily: $('dF').checked }, '🎲 Names drawn!'); closeSheet(); };
+}
+async function delDraw(id) { if (confirm('Delete this Secret Santa?')) await act('draw.del', { id }, 'Deleted'); }
+function shareSheet() {
+  const cur = (S.shares || {}).mine || [];
+  sheet(`<h3><span>🤝 Share my planner</span><button class="x" onclick="closeSheet()">✕</button></h3><div class="ppl">${S.people.filter(p => !p.kid && p.id !== S.me.id).map(p => `<button type="button" class="pp ${cur.includes(p.id) ? 'in' : ''}" data-s="${p.id}" style="opacity:${cur.includes(p.id) ? 1 : .45}">${av(p, 38)}${esc(p.name)}</button>`).join('')}</div><button class="btn wide" id="sGo" style="margin-top:12px">Save</button>`);
+  document.querySelectorAll('[data-s]').forEach(b => b.onclick = () => { b.classList.toggle('in'); b.style.opacity = b.classList.contains('in') ? 1 : .45; });
+  $('sGo').onclick = async () => { await act('share', { with: [...document.querySelectorAll('[data-s].in')].map(b => b.dataset.s) }, 'Sharing updated'); closeSheet(); };
+}
+function pinSheet() {
+  sheet(`<h3><span>🔐 Change my code</span><button class="x" onclick="closeSheet()">✕</button></h3><label>Current code</label><input class="in" id="p1" inputmode="numeric" maxlength="4" type="password"><label>New code</label><input class="in" id="p2" inputmode="numeric" maxlength="4" type="password"><div style="height:10px"></div><button class="btn wide" id="pGo">Save</button>`);
+  $('pGo').onclick = async () => { await act('pin', { old: $('p1').value, new: $('p2').value }, 'Code changed. Sign in with the new one.'); signOut(true); };
+}
+function resetSheet() {
+  sheet(`<h3><span>🔐 Reset a code</span><button class="x" onclick="closeSheet()">✕</button></h3><label>Who</label><select class="in" id="r1">${S.people.filter(p => p.id !== S.me.id && (S.me.admin || (p.kid && p.family === S.me.family))).map(p => `<option value="${p.id}">${esc(p.name)}</option>`).join('')}</select><label>New code</label><input class="in" id="r2" inputmode="numeric" maxlength="4"><div style="height:10px"></div><button class="btn wide" id="rGo">Reset</button>`);
+  $('rGo').onclick = async () => { await act('pin.reset', { user: $('r1').value, new: $('r2').value }, 'Code reset'); closeSheet(); };
+}
+function sheet(h) { $('sh').innerHTML = h; $('sheet').classList.add('on'); }
+function closeSheet() { $('sheet').classList.remove('on'); }
+$('sheet').onclick = e => { if (e.target.id === 'sheet') closeSheet(); };
+
+// ❄ snow on the header
+(() => { const c = $('snow'), x = c.getContext('2d'); const fit = () => { c.width = c.offsetWidth; c.height = c.offsetHeight; }; fit(); addEventListener('resize', fit);
+  const F = Array.from({ length: 40 }, () => ({ x: Math.random() * 800, y: Math.random() * 120, r: Math.random() * 1.8 + .6, s: Math.random() * .5 + .2 }));
+  (function t() { x.clearRect(0, 0, c.width, c.height); x.fillStyle = 'rgba(255,255,255,.8)'; for (const f of F) { f.y += f.s; if (f.y > c.height) { f.y = -3; f.x = Math.random() * c.width; } x.beginPath(); x.arc(f.x % c.width, f.y, f.r, 0, 7); x.fill(); } requestAnimationFrame(t); })(); })();
+
+(async () => { if (TOK) { try { S = await call('/api/state'); $('login').style.display = 'none'; render(); return; } catch (e) {} } showLogin(); })();
+</script></body></html>
