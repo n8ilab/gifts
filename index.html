@@ -75,7 +75,7 @@ const API = 'https://north-pole.n8ilab.workers.dev';
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const money = n => '$' + (+n || 0).toFixed(2).replace(/\.00$/, '');
-const COL = { kays: '#7c3aed', florys: '#c8102e', gammys: '#0f766e' };
+const COL = { kays: '#7c3aed', florys: '#c8102e', gammys: '#0f766e', patschkes: '#b45309', wolfes: '#1d4ed8' };
 const ST = { idea: 'Idea', ordered: 'Ordered', delivered: 'Delivered', wrapped: 'Wrapped' }, STK = Object.keys(ST);
 const FR = { parent: ['👪', 'Parent'], santa: ['🎅', 'Santa'], stocking: ['🧦', 'Stocking'] };
 let TOK = localStorage.getItem('np.tok'), S = null, TAB = 'lists', VIEWP = null, PF = 'all', PEOPLE0 = null, PIN = '', LUSER = null, IDLE = Date.now();
