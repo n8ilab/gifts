@@ -1,22 +1,19 @@
 {
  "name": "North Pole",
  "short_name": "North Pole",
+ "description": "Plan the whole family Christmas: wish lists, gifts, cards, meals, events, memories.",
  "start_url": "./",
  "scope": "./",
  "display": "standalone",
+ "orientation": "portrait",
  "background_color": "#0f3b2e",
  "theme_color": "#0f3b2e",
  "icons": [
-  {
-   "src": "icon-192.png",
-   "sizes": "192x192",
-   "type": "image/png"
-  },
-  {
-   "src": "icon-512.png",
-   "sizes": "512x512",
-   "type": "image/png",
-   "purpose": "any maskable"
-  }
+  { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+  { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+ ],
+ "shortcuts": [
+  { "name": "Snap a gift idea", "url": "./?go=snap", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] },
+  { "name": "Wish lists", "url": "./?go=lists", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] }
  ]
 }
